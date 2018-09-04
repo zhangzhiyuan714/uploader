@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'form_base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload</title>
+</head>
+<body>
+{% block page_content %}
+    <h2>文件上传系统</h2>
+    <form action="" enctype='multipart/form-data' method='POST'>
+        <input type="file" name="file">
+        <input type="submit" value="上传">
+    </form>
+    {% for v in get_flashed_messages(category_filter=['err']) %}
+        <p style="color:red;">{{ v }}</p>
+    {% endfor %}
+    {% for v in get_flashed_messages(category_filter=['ok']) %}
+        <p style="color:green;">{{ v }}</p>
+    {% endfor %}
+    <a href="{{ url_for('blog.filelist') }}">文件列表</a> 
+{% endblock %}
+</body>
+</html>
